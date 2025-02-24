@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	{{ title }}
+{% endblock %}
+
+{% block content %}
+    <h2 class="title"> Your Notes </h2>
+
+	<div class="notes">
+	{% for note in notes %}
+        	<div class="note">
+        		<p>
+                	<span class="user-id">{{ note.user_id }}</span> | 
+                	<span class="name">{{ note.username }}</span> | 
+                	<span class="timestamp">{{ note.created_at }}</span>
+            	</p>
+            	<p class="note-content">{{ note.note_content }}</p>
+        	</div>
+        
+		{% endfor %}
+	</div>
+{% endblock %}

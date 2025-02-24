@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		{% block title %}
+			{{ title }}
+		{% endblock %}
+	</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'style.css') }}">
+</head>
+<body>
+
+	<div class="navbar">
+		<ul>
+			{% if 'email' in session %}
+				<li><a href="{{ url_for('home') }}">Home</a></li>
+				<li><a href="{{ url_for('about') }}">About</a></li>
+				<li><a href="{{ url_for('contact') }}">Contact</a></li>
+				<li><a href="{{ url_for('notes') }}">Notes</a></li>
+				<li><a href="{{ url_for('logout') }}">Logout</a></li>
+			{% else %}
+				<li><a href="{{ url_for('register') }}">Register</a></li>
+				<li><a href="{{ url_for('login') }}">Login</a></li>
+				<li><a href="{{ url_for('notes') }}">Notes</a></li>
+			{% endif %}
+
+
+		</ul>
+	</div>
+
+	{% with messages = get_flashed_messages(with_categories=true) %}
+   		{% if messages %}
+      		<ul class="flash-messages">
+            {% for category, msg in messages %}
+                <li class="flash-{{ category }}">
+                	{{ msg }}
+                	<span class="close-btn">
+                		<a href="{{ url_for('home') }}">
+                		&times;
+                		</a>
+                	</span>
+            	</li>
+
+            {% endfor %}
+        </ul>
+   		{% endif %}
+	{% endwith %}
+
+
+	{% block content %}
+		<p>
+			This page is just a home page to redirect user to another pages.
+		</p>
+	{% endblock %}
+
+	{% if 'email' in session %}
+		{% include 'note.html' %}
+	{% endif %}
+
+	<hr>
+
+	<footer>
+		<p>Copyright &copy; 2025 | All right reservered</p>
+	</footer>
+
+</body>
+</html>
