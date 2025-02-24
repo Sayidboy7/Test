@@ -1,0 +1,216 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #007bff;
+    padding: 10px 0;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar ul li a:hover {
+    color: #ffcc00;
+}
+
+/* Content */
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+p {
+    text-align: center;
+    color: #555;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    margin-top: 20px;
+}
+
+/*Forms
+
+/* Umumiy form stilizatsiyasi */
+form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form p {
+    margin-bottom: 15px;
+    margin-right:10px;
+}
+
+form label {
+    display: block;
+    margin-right:10px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+form textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Inputlar uchun fokus holati */
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus,
+form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+/* Hand work */
+hr {
+    margin: 30px;
+    background: yellowgreen;
+}
+
+.title{
+    font-family: sans-serif;
+    text-align: center;
+}
+
+
+
+/* Notes page */
+  .notes {
+    display: flex; /* Yonma-yon qilish */
+    flex-wrap: wrap; /* Ekran sig‘maganida pastga tushishi uchun */
+    gap: 10px; /* Notelar orasidagi bo‘shliq */
+    margin: 10px;
+}
+
+.note {
+    width: 200px; /* Har bir note o‘lchami */
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Flash message style */
+
+.flash-messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 0px 0;
+}
+
+.flash-messages li {
+    padding: 5px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.flash-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.flash-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.flash-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.flash-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+.close-btn {
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 1000px;
+}
+
+.close-btn a {
+    text-decoration: none;
+    color: black;
+}
+
+.close-btn a:hover{
+    color: #999;
+}
