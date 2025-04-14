@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Blog</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-messages">
+                        <li>
+                            <div class="flash-{{ category }}">{{ message }} <a href="?">&times;</a> </div> 
+                        </li>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% if 'user_id' in session %}
+            <form action="{{ url_for('add_comment') }}" method="post">
+                <div class="form-group">
+                    <textarea name="content" class="form-control" rows="3" placeholder="Write a comment..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Comment</button>
+            </form>
+        {% else %}
+            <p><a href="{{ url_for('login') }}">Login</a> to comment.</p>
+        {% endif %}
+        <hr>
+        {% for comment in comments %}
+            <div class="media">
+                <div class="media-body">
+                    <h5 class="mt-0">User {{ comment.user_id }}</h5>
+                    <p>{{ comment.content }}</p>
+                    <small>{{ comment.timestamp }}</small>
+                    <button class="btn btn-sm btn-light" onclick="toggleReplyForm({{ comment.id }})">Reply</button>
+                    <div id="replyForm{{ comment.id }}" style="display: none;">
+                        <form action="{{ url_for('add_reply', parent_id=comment.id) }}" method="post">
+                            <div class="form-group">
+                                <textarea name="content" class="form-control" rows="2" placeholder="Write a reply..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-sm">Submit Reply</button>
+                        </form>
+                    </div>
+                    {% for reply in comment.replies %}
+                        <div class="media ml-5 mt-2">
+                            <div class="media-body">
+                                <h5 class="mt-0">User {{ reply.user_id }}</h5>
+                                <p>{{ reply.content }}</p>
+                                <small>{{ reply.timestamp }}</small>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+    <script>
+    function toggleReplyForm(commentId) {
+        var form = document.getElementById('replyForm' + commentId);
+        if (form.style.display === 'none') {
+            form.style.display = 'block';
+        } else {
+            form.style.display = 'none';
+        }
+    }
+    </script>
+</body>
+</html>
